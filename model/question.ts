@@ -33,4 +33,11 @@ export default class QuestionModel {
   get gotRight() {
     return this.#gotRight;
   }
+
+  get answered(): boolean {
+    const reducer = (acc: boolean, cur: AlternativeModel): boolean =>
+      cur.clicked ? true : acc;
+
+    return this.alternatives.reduce(reducer, false);
+  }
 }

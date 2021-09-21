@@ -1,13 +1,15 @@
+import AlternativeModel from "./alternative";
+
 export default class QuestionModel {
   #id: number;
   #statement: string;
-  #alternatives: any[];
+  #alternatives: AlternativeModel[];
   #gotRight: boolean;
 
   constructor(
     id: number,
     statement: string,
-    alternatives: any[],
+    alternatives: AlternativeModel[],
     gotRight: boolean
   ) {
     this.#id = id;

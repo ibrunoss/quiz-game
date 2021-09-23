@@ -1,3 +1,9 @@
+export interface AlternativeModelInterface {
+  value: string;
+  clicked: boolean;
+  right: boolean;
+}
+
 export default class AlternativeModel {
   #value: string;
   #clicked: boolean;
@@ -25,5 +31,13 @@ export default class AlternativeModel {
   }
   get right() {
     return this.#right;
+  }
+
+  toObject(): AlternativeModelInterface {
+    return {
+      value: this.#value,
+      clicked: this.#clicked,
+      right: this.#right,
+    };
   }
 }

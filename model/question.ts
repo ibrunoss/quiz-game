@@ -1,4 +1,5 @@
 import AlternativeModel, { AlternativeModelInterface } from "./alternative";
+import sort from "../function/sort";
 
 export interface QuestionModelInterface {
   id: number;
@@ -45,6 +46,17 @@ export default class QuestionModel {
       cur.clicked ? true : acc;
 
     return this.alternatives.reduce(reducer, false);
+  }
+
+  sortAlternatives(): QuestionModel {
+    const alternatives: AlternativeModel[] = sort(this.#alternatives);
+
+    return new QuestionModel(
+      this.#id,
+      this.#statement,
+      alternatives,
+      this.#gotRight
+    );
   }
 
   toObject(): QuestionModelInterface {

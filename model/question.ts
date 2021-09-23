@@ -1,5 +1,11 @@
-import AlternativeModel from "./alternative";
+import AlternativeModel, { AlternativeModelInterface } from "./alternative";
 
+export interface QuestionModelInterface {
+  id: number;
+  statement: string;
+  alternatives: AlternativeModelInterface[];
+  gotRight: boolean;
+}
 export default class QuestionModel {
   #id: number;
   #statement: string;
@@ -39,5 +45,16 @@ export default class QuestionModel {
       cur.clicked ? true : acc;
 
     return this.alternatives.reduce(reducer, false);
+  }
+
+  toObject(): QuestionModelInterface {
+    return {
+      id: this.#id,
+      statement: this.#statement,
+      alternatives: this.alternatives.map((alternative) =>
+        alternative.toObject()
+      ),
+      gotRight: this.#gotRight,
+    };
   }
 }

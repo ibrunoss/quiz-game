@@ -3,10 +3,18 @@ export default class AlternativeModel {
   #clicked: boolean;
   #right: boolean;
 
-  constructor(value: string, clicked: boolean, right: boolean) {
+  constructor(value: string, right: boolean, clicked: boolean = false) {
     this.#value = value;
     this.#clicked = clicked;
     this.#right = right;
+  }
+
+  static correct(value: string) {
+    return new AlternativeModel(value, true);
+  }
+
+  static wrong(value: string) {
+    return new AlternativeModel(value, false);
   }
 
   get value() {

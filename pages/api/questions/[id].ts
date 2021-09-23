@@ -10,7 +10,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   const question: QuestionModelInterface | false = filteredQuestion[0]
-    ? filteredQuestion[0].toObject()
+    ? filteredQuestion[0].sortAlternatives().toObject()
     : false;
 
   if (question) {

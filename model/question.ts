@@ -10,7 +10,7 @@ export default class QuestionModel {
     id: number,
     statement: string,
     alternatives: AlternativeModel[],
-    gotRight: boolean
+    gotRight: boolean = false
   ) {
     this.#id = id;
     this.#statement = statement;

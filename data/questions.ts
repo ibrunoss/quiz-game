@@ -1,7 +1,7 @@
 import QuestionModel from "../model/question";
 import AlternativeModel from "../model/alternative";
 
-const questoes: QuestionModel[] = [
+const questions: QuestionModel[] = [
   new QuestionModel(306, "Qual bicho transmite a Doença de Chagas?", [
     AlternativeModel.wrong("Abelha"),
     AlternativeModel.wrong("Barata"),
@@ -124,4 +124,4 @@ const questoes: QuestionModel[] = [
   ]),
 ];
 
-export default questoes;
+export default questions;

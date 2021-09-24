@@ -5,6 +5,7 @@ export interface QuestionModelInterface {
   id: number;
   statement: string;
   alternatives: AlternativeModelInterface[];
+  answered: boolean;
   gotRight: boolean;
 }
 export default class QuestionModel {
@@ -75,6 +76,7 @@ export default class QuestionModel {
       alternatives: this.alternatives.map((alternative) =>
         alternative.toObject()
       ),
+      answered: this.answered,
       gotRight: this.#gotRight,
     };
   }

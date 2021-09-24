@@ -33,6 +33,11 @@ export default class AlternativeModel {
     return this.#right;
   }
 
+  click(): AlternativeModel {
+    const clicked = true;
+    return new AlternativeModel(this.value, this.right, clicked);
+  }
+
   toObject(): AlternativeModelInterface {
     return {
       value: this.#value,

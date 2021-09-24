@@ -1,0 +1,43 @@
+.alternative {
+  display: flex;
+  height: 100px;
+  margin: 10px;
+  width: 80%;
+  min-width: 500px;
+  cursor: pointer;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.front,
+.back {
+  position: absolute;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.front {
+  align-items: center;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.letter {
+  display: flex;
+  margin-right: 20px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}

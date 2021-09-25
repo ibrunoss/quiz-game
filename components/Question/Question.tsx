@@ -5,11 +5,11 @@ import Alternative from "../Alternative/Alternative";
 
 interface QuestionProps {
   value: QuestionModel;
+  onResponse: (index: number) => void;
 }
 
 const Question: React.FC<QuestionProps> = (props) => {
-  const { value: question } = props;
-
+  const { value: question, onResponse } = props;
   const letters = [
     {
       value: "A",
@@ -37,6 +37,7 @@ const Question: React.FC<QuestionProps> = (props) => {
         index={i}
         key={`${i}_${alternative.value}`}
         letterBg={letters[i].color}
+        onResponse={onResponse}
       />
     ));
 

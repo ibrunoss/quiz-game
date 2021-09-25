@@ -49,7 +49,7 @@ export default class QuestionModel {
     return this.alternatives.reduce(reducer, false);
   }
 
-  click(index: 0 | 1 | 2 | 3): QuestionModel {
+  click(index: number): QuestionModel {
     const gotRight = this.#alternatives[index].right;
     const alternatives = this.#alternatives.map((alternative, i) =>
       index === i ? alternative.click() : alternative

@@ -6,6 +6,7 @@ interface AlternativeProps {
   index: number;
   letter: string;
   letterBg: string;
+  onResponse: (index: number) => void;
 }
 
 const Alternative: React.FC<AlternativeProps> = (props) => {
@@ -14,9 +15,10 @@ const Alternative: React.FC<AlternativeProps> = (props) => {
     index: id,
     letter,
     letterBg: backgroundColor,
+    onResponse,
   } = props;
   return (
-    <div className={styles.alternative}>
+    <div className={styles.alternative} onClick={() => onResponse(id)}>
       <div className={styles.content}>
         <div className={styles.front}>
           <div className={styles.letter} style={{ backgroundColor }}>

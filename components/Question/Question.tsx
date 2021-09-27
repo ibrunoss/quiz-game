@@ -2,14 +2,16 @@ import styles from "./Question.module.css";
 import QuestionModel from "../../model/question";
 import Statement from "../Statement/Statement";
 import Alternative from "../Alternative/Alternative";
+import Timer from "../Timer/Timer";
 
 interface QuestionProps {
   value: QuestionModel;
   onResponse: (index: number) => void;
+  timeOut: () => void;
 }
 
 const Question: React.FC<QuestionProps> = (props) => {
-  const { value: question, onResponse } = props;
+  const { value: question, onResponse, timeOut } = props;
   const letters = [
     {
       value: "A",
@@ -44,6 +46,7 @@ const Question: React.FC<QuestionProps> = (props) => {
   return (
     <div className={styles.question}>
       <Statement text={question.statement} />
+      <Timer duration={10} onComplete={timeOut} />
       {renderAlternatives()}
     </div>
   );

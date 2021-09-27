@@ -13,17 +13,20 @@ export default class QuestionModel {
   #statement: string;
   #alternatives: AlternativeModel[];
   #gotRight: boolean;
+  #timeIsUp: boolean;
 
   constructor(
     id: number,
     statement: string,
     alternatives: AlternativeModel[],
-    gotRight: boolean = false
+    gotRight: boolean = false,
+    timeIsUp: boolean = false
   ) {
     this.#id = id;
     this.#statement = statement;
     this.#alternatives = alternatives;
     this.#gotRight = gotRight;
+    this.#timeIsUp = timeIsUp;
   }
 
   get id() {
@@ -43,6 +46,10 @@ export default class QuestionModel {
   }
 
   get answered(): boolean {
+    if (this.#timeIsUp) {
+      return true;
+    }
+
     const reducer = (acc: boolean, cur: AlternativeModel): boolean =>
       cur.clicked ? true : acc;
 
@@ -50,12 +57,19 @@ export default class QuestionModel {
   }
 
   click(index: number): QuestionModel {
-    const gotRight = this.#alternatives[index].right;
+    const gotRight = this.#alternatives[index]?.right;
+    const timeIsUp = index === -1;
     const alternatives = this.#alternatives.map((alternative, i) =>
       index === i ? alternative.click() : alternative
     );
 
-    return new QuestionModel(this.id, this.statement, alternatives, gotRight);
+    return new QuestionModel(
+      this.id,
+      this.statement,
+      alternatives,
+      gotRight,
+      timeIsUp
+    );
   }
 
   sortAlternatives(): QuestionModel {

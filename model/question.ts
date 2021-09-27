@@ -56,6 +56,10 @@ export default class QuestionModel {
     return this.alternatives.reduce(reducer, false);
   }
 
+  get notAnswered(): boolean {
+    return !this.answered;
+  }
+
   click(index: number): QuestionModel {
     const gotRight = this.#alternatives[index]?.right;
     const timeIsUp = index === -1;

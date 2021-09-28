@@ -46,7 +46,7 @@ const Question: React.FC<QuestionProps> = (props) => {
   return (
     <div className={styles.question}>
       <Statement text={question.statement} />
-      <Timer duration={10} onComplete={timeOut} />
+      <Timer key={question.id} duration={10} onComplete={timeOut} />
       {renderAlternatives()}
     </div>
   );

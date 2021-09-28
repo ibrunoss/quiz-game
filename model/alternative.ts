@@ -38,6 +38,10 @@ export default class AlternativeModel {
     return new AlternativeModel(this.value, this.right, clicked);
   }
 
+  static makeNew(object: AlternativeModelInterface): AlternativeModel {
+    return new AlternativeModel(object.value, object.right, object.clicked);
+  }
+
   toObject(): AlternativeModelInterface {
     return {
       value: this.#value,

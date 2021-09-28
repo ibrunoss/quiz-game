@@ -1,0 +1,17 @@
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: "center";
+  align-items: "center";
+  min-height: 100vh;
+  font-size: 2rem;
+}
+
+.result h1,
+.result h2,
+.result h3,
+.result h4,
+.result h5,
+.result h6 {
+  text-align: center;
+}

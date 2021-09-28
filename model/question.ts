@@ -7,6 +7,7 @@ export interface QuestionModelInterface {
   alternatives: AlternativeModelInterface[];
   answered: boolean;
   gotRight: boolean;
+  timeIsUp: boolean;
 }
 export default class QuestionModel {
   #id: number;
@@ -96,6 +97,7 @@ export default class QuestionModel {
       ),
       answered: this.answered,
       gotRight: this.#gotRight,
+      timeIsUp: this.#timeIsUp,
     };
   }
 }

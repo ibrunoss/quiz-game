@@ -88,6 +88,19 @@ export default class QuestionModel {
     );
   }
 
+  static makeNew(object: QuestionModelInterface): QuestionModel {
+    const alternatives = object.alternatives.map((alternative) =>
+      AlternativeModel.makeNew(alternative)
+    );
+    return new QuestionModel(
+      object.id,
+      object.statement,
+      alternatives,
+      object.gotRight,
+      object.timeIsUp
+    );
+  }
+
   toObject(): QuestionModelInterface {
     return {
       id: this.#id,

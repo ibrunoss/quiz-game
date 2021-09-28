@@ -1,5 +1,4 @@
 import QuestionModel from "../../model/question";
-import Button from "../Button/Button";
 import Question from "../Question/Question";
 
 import styles from "./Quiz.module.css";
@@ -24,8 +23,6 @@ const Quiz: React.FC<QuizProps> = (props) => {
       {question && (
         <Question onResponse={answered} timeOut={timeOut} value={question} />
       )}
-
-      <Button href="/result" text="Resultado" />
     </div>
   );
 };

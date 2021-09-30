@@ -69,7 +69,7 @@ const Home: NextPage = () => {
       const nextIndex = nextQuestionId();
 
       nextIndex ? getQuestion(nextIndex) : finish();
-    }, 250);
+    }, 900);
   };
 
   const finish = () =>

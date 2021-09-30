@@ -18,6 +18,12 @@ const Alternative: React.FC<AlternativeProps> = (props) => {
     onResponse,
   } = props;
 
+  const contentClassName: string[] = [styles.content];
+
+  if (alternative.clicked) {
+    contentClassName.push(styles["animate-click"]);
+  }
+
   const renderCorrectAlternative = () => (
     <div className={styles.correct}>
       <div>Resposta correta</div>
@@ -34,21 +40,18 @@ const Alternative: React.FC<AlternativeProps> = (props) => {
 
   return (
     <div className={styles.alternative} onClick={() => onResponse(id)}>
-      <div className={styles.content}>
-        {alternative.clicked ? (
-          <div className={styles.back}>
-            {alternative.right
-              ? renderCorrectAlternative()
-              : renderWrongAlternative()}
+      <div className={contentClassName.join(" ")}>
+        <div className={styles.front}>
+          <div className={styles.letter} style={{ backgroundColor }}>
+            {letter}
           </div>
-        ) : (
-          <div className={styles.front}>
-            <div className={styles.letter} style={{ backgroundColor }}>
-              {letter}
-            </div>
-            <div className={styles.text}>{alternative.value}</div>
-          </div>
-        )}
+          <div className={styles.text}>{alternative.value}</div>
+        </div>
+        <div className={styles.back}>
+          {alternative.right
+            ? renderCorrectAlternative()
+            : renderWrongAlternative()}
+        </div>
       </div>
     </div>
   );

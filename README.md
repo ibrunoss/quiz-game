@@ -1,5 +1,7 @@
 # <div align="center">Quiz Game</div>
 
+<img src="./screenshots.gif" />
+
 <p align="center">The goal of this project is to develop a quiz game to demonstrate knowledge about the technologies listed below</p>
 
 ## 🛠️ Technologies

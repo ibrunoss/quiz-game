@@ -15,7 +15,6 @@ export default function Result() {
   const total = +router.query.t || 0;
   const hitPercentage = Math.round((correct / total) * 100);
 
-  console.log(hitPercentage);
   return (
     <div className={styles.result}>
       <h1>Resultado</h1>

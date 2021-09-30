@@ -43,6 +43,14 @@ export default function Result() {
           value={wrong}
           background="#DE6A63"
         />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Button href="/" text="Tentar Novamente" />
       </div>
     </div>

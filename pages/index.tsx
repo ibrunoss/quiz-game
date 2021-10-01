@@ -3,27 +3,19 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
 import Quiz from "../components/Quiz/Quiz";
-import AlternativeModel from "../model/alternative";
 import QuestionModel, { QuestionModelInterface } from "../model/question";
-
-const questionInitial = new QuestionModel(1, "Enunciado da pergunta?", [
-  AlternativeModel.wrong("Alternativa Um"),
-  AlternativeModel.wrong("Alternativa Dois"),
-  AlternativeModel.wrong("Alternativa Três"),
-  AlternativeModel.correct("Alternativa Quatro"),
-]);
 
 const baseURL = (endpoint: string = "") => `/api${endpoint}`;
 
 const Home: NextPage = () => {
-  const [question, setQuestion] = useState(questionInitial);
+  const [question, setQuestion] = useState<QuestionModel>();
   const [questionsIds, setQuestionsIds] = useState<number[]>([]);
   const [correctAnswerCount, setCorrectAnswerCount] = useState<number>(0);
   const [wrongAnswerCount, setWrongAnswerCount] = useState<number>(0);
 
   const router = useRouter();
 
-  const questionRef = useRef<QuestionModel>(question);
+  const questionRef = useRef<QuestionModel>();
 
   useEffect(() => {
     questionRef.current = question;
@@ -59,6 +51,10 @@ const Home: NextPage = () => {
   };
 
   const nextQuestionId = (): number | undefined => {
+    if (!question) {
+      return;
+    }
+
     const nextIndex = questionsIds.indexOf(question.id) + 1;
 
     return questionsIds[nextIndex];
@@ -95,7 +91,7 @@ const Home: NextPage = () => {
   const timeOut = () => {
     const question = questionRef.current;
 
-    if (question.notAnswered) {
+    if (question?.notAnswered) {
       setWrongAnswerCount(wrongAnswerCount + 1);
     }
 

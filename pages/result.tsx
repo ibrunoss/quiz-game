@@ -18,14 +18,7 @@ export default function Result() {
   return (
     <div className={styles.result}>
       <h1>Resultado</h1>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div>
         <Statistic
           text={total > 1 ? "Perguntas" : "Pergunta"}
           value={total}
@@ -43,13 +36,7 @@ export default function Result() {
           background="#DE6A63"
         />
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div>
         <Button href="/" text="Tentar Novamente" />
       </div>
     </div>

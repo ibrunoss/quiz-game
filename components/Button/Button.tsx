@@ -10,7 +10,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = (props) => {
   const { href, text } = props;
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <button className={styles.button}>{text}</button>
     </Link>
   );

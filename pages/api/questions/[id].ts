@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import questions from "../../../data/questions";
 import { QuestionModelInterface } from "../../../model/question";
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+const QuizID = (req: NextApiRequest, res: NextApiResponse) => {
   const questionId = +req.query.id;
   const filteredQuestion = questions.filter(
     (question) => question.id === questionId
@@ -19,3 +19,5 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
   res.status(204).send(undefined);
 };
+
+export default QuizID;
